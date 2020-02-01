@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "bootstrap": "^4.4.1",
-    "jquery": "^1.9.1",
+    "jquery": "^3.4.0",
     "mariadb": "^2.1.5",
     "popper.js": "^1.16.1"
   }
