@@ -1,0 +1,16 @@
+extends layout
+
+block content  
+  form
+    div(class="form-group")
+      label(for="firstname") First Name
+      input(class="form-control", type="text", id="firstname", placeholder="John", name="firstname")
+    div(class="form-group")
+      label(for="lastname") Last Name
+      input(class="form-control", type="text", id="lastname", placeholder="Doe", name="lastname")
+    div(class="form-group")
+      label(for="email") Email Address
+      input(class="form-control", type="text", id="email", placeholder="johndoe@email.com", name="email")
+    div
+      button(class="btn btn-primary", type="submit") Submit
+  a(href="adminlogin") Admin? Log in HERE
