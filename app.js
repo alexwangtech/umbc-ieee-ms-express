@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var submitAttendanceRouter = require("./routes/submitattendance");
 var adminLoginRouter = require("./routes/adminlogin");
 var submitAdminLoginRouter = require("./routes/submitlogin");
+var newMemberRouter = require("./routes/new-member");
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use('/users', usersRouter);
 app.use("/submit-attendance", submitAttendanceRouter);
 app.use("/adminlogin", adminLoginRouter);
 app.use("/submit-admin-login", submitAdminLoginRouter);
+app.use("/new-member", newMemberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
