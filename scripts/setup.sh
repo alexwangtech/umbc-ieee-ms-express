@@ -5,22 +5,34 @@
 read -sp "Enter MariaDB SQL password: " rootpasswd
 
 # Indicate that bash script execution is starting:
-echo $'\nExecuting script......'
+echo $'\nExecuting script...'
 
 # Execute commands here:
 #########################################
 
 # Drop any existing structure:
-echo Removing any existing structures......
+echo Removing any existing structures...
 mysql -u root -p${rootpasswd} -e "DROP DATABASE IF EXISTS umbc_ieee_members;"
 
 # Create the database + tables:
-echo Creating database......
+echo Creating database...
 mysql -u root -p${rootpasswd} -e "CREATE DATABASE umbc_ieee_members;"
 
-echo Creating tables......
-mysql -u root -p${rootpasswd} -e ""
+echo Creating tables...
+mysql -u root -p${rootpasswd} umbc_ieee_members -e \
+  "CREATE TABLE Members ( \
+    ID int NOT NULL AUTO_INCREMENT, \
+    LastName varchar(255) NOT NULL, \
+    Firstname varchar(255) NOT NULL, \
+    PRIMARY KEY (ID) \
+  );"
 
-mysql -u root -p${rootpasswd} -e ""
+mysql -u root -p${rootpasswd} umbc_ieee_members -e \
+  "CREATE TABLE Attendance ( \
+    ID int NOT NULL, \
+    Date DATE NOT NULL, \
+    PRIMARY KEY (ID), \
+    FOREIGN KEY (ID) REFERENCES Members(ID) \
+  );"
 
 echo Done!
