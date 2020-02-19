@@ -15,6 +15,14 @@ router.post("/", function(req, res, next) {
   let lastname = req.body.lastname;
   let email = req.body.email;
 
+  // if one of the fields is blank, render the error page
+  if (firstname === "" ||
+      lastname  === "" ||
+      email     === "") {
+    res.render();
+    return;
+  }
+
   let getQueryString = () => {
     return (
       "insert into members values(" +
