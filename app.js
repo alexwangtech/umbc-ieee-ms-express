@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var submitAttendanceRouter = require("./routes/submitattendance");
-var adminLoginRouter = require("./routes/adminlogin");
+var submitAttendanceRouter = require("./routes/submit-attendance");
+var adminLoginRouter = require("./routes/admin-login");
 var submitAdminLoginRouter = require("./routes/submitlogin");
 var newMemberRouter = require("./routes/new-member");
 
@@ -21,13 +21,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/submit-attendance", submitAttendanceRouter);
-app.use("/adminlogin", adminLoginRouter);
+app.use("/admin-login", adminLoginRouter);
 app.use("/submit-admin-login", submitAdminLoginRouter);
 app.use("/new-member", newMemberRouter);
 

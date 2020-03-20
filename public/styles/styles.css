@@ -1,0 +1,25 @@
+.html {
+  height: 100%;
+}
+
+.body {
+  height: 100%;
+}
+
+.returning-member-body {
+  background-image: url('/images/index-page-background.jpg');
+  /* background-size: 100% 100%; */
+}
+
+.new-member-body {
+  background-image: url('/images/new-member-background.png');
+}
+
+.form-body-wrapper {
+  /*height: 100vh;*/
+  /* 94 is the limit before the scrollbar appears */
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

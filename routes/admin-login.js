@@ -8,7 +8,7 @@ var router = express.Router();
  */
 router.get("/", function(req, res, next) {
   console.log("page --> /adminlogin received!");
-  res.render("adminlogin");
+  res.render("admin-login");
   console.log("page --> /adminlogin rendered!");
 });
 
