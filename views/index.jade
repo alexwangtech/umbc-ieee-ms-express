@@ -19,17 +19,17 @@ html
         div(class="row center-block")
           div(class="col-sm-3 col-lg-4")
           div(class="col-sm-6 col-lg-4 shadow-lg p-3 mb-5 bg-white rounded")
-            h3(class="text-center") Returning Member
+            h3(class="text-center") Submit Attendance
             form(method="POST", action="/submit-attendance")
               div(class="form-group")
                 label(for="firstname") First Name
-                input(class="form-control", type="text", id="firstname", placeholder="John")
+                input(class="form-control", type="text", id="firstname", placeholder="John", required)
               div(class="form-group")
                 label(for="lastname") Last Name
-                input(class="form-control", type="text", id="lastname", placeholder="Doe")
+                input(class="form-control", type="text", id="lastname", placeholder="Doe", required)
               div(class="form-group")
                 label(for="email") Email Address
-                input(class="form-control", type="text", id="email", placeholder="johndoe@email.com")
+                input(class="form-control", type="text", id="email", placeholder="johndoe@email.com", required)
               div(class="text-center")
                 button(class="btn btn-primary", type="submit") Submit
           div(class="col-sm-3 col-lg-4")

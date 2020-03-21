@@ -7,9 +7,7 @@ var router = express.Router();
  * Page for Administrator Login
  */
 router.get("/", function(req, res, next) {
-  console.log("page --> /adminlogin received!");
   res.render("admin-login");
-  console.log("page --> /adminlogin rendered!");
 });
 
 module.exports = router;

@@ -23,16 +23,18 @@ mysql -u root -p${rootpasswd} umbc_ieee_members -e \
   "CREATE TABLE Members ( \
     ID int NOT NULL AUTO_INCREMENT, \
     LastName varchar(255) NOT NULL, \
-    Firstname varchar(255) NOT NULL, \
+    FirstName varchar(255) NOT NULL, \
+    Email varchar(255) NOT NULL, \
     PRIMARY KEY (ID) \
   );"
 
 mysql -u root -p${rootpasswd} umbc_ieee_members -e \
   "CREATE TABLE Attendance ( \
-    ID int NOT NULL, \
+    ID int NOT NULL AUTO_INCREMENT, \
+    MemberID int NOT NULL, \
     Date DATE NOT NULL, \
     PRIMARY KEY (ID), \
-    FOREIGN KEY (ID) REFERENCES Members(ID) \
+    FOREIGN KEY (MemberID) REFERENCES Members(ID) \
   );"
 
 echo Done!

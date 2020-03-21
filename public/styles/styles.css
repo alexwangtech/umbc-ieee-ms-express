@@ -15,6 +15,10 @@
   background-image: url('/images/new-member-background.png');
 }
 
+.admin-login-body {
+  background-image: url('/images/admin-login-background.jpg');
+}
+
 .form-body-wrapper {
   /*height: 100vh;*/
   /* 94 is the limit before the scrollbar appears */

@@ -3,7 +3,7 @@ var router = express.Router();
 
 var mariadb = require("mariadb");
 var logins = require("../logins/logins");
-var connInfo = require("../sql/conn_info");
+var connInfo = require("../sql/conn-info.json");
 
 /**
  * Admin Logging In

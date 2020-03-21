@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 var mariadb = require("mariadb");
-var connInfo = require("../sql/conn_info");
+var connInfo = require("../sql/conn-info.json");
 
 /**
  * Submit Member Info

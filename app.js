@@ -5,13 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var submitAttendanceRouter = require("./routes/submit-attendance");
 var adminLoginRouter = require("./routes/admin-login");
 var submitAdminLoginRouter = require("./routes/submitlogin");
 var newMemberRouter = require("./routes/new-member");
+var submitNewMemberRouter = require("./routes/submit-new-member");
+var errorRouter = require('./routes/error');
 
 var app = express();
+
+// Set app.locals variables:
+app.locals.loginEnabled = false;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,11 +28,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use("/submit-attendance", submitAttendanceRouter);
+app.use("/new-member", newMemberRouter);
+app.use("/submit-new-member", submitNewMemberRouter);
 app.use("/admin-login", adminLoginRouter);
 app.use("/submit-admin-login", submitAdminLoginRouter);
-app.use("/new-member", newMemberRouter);
+app.use('/error', errorRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -7,7 +7,8 @@ var router = express.Router();
  * Page for a new member to submit attendance
  */
 router.get("/", function(req, res, next) {
-  res.render("new-member");
+  let renderAlert = req.query.renderAlert === "true" ? true : false;
+  res.render("new-member", { renderAlert: renderAlert });
 });
 
 module.exports = router;
