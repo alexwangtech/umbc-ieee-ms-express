@@ -10,6 +10,7 @@ var adminLoginRouter = require("./routes/admin-login");
 var submitAdminLoginRouter = require("./routes/submitlogin");
 var newMemberRouter = require("./routes/new-member");
 var submitNewMemberRouter = require("./routes/submit-new-member");
+var newMemberSucessRouter = require('./routes/new-member-success');
 var errorRouter = require('./routes/error');
 
 var app = express();
@@ -31,6 +32,7 @@ app.use('/', indexRouter);
 app.use("/submit-attendance", submitAttendanceRouter);
 app.use("/new-member", newMemberRouter);
 app.use("/submit-new-member", submitNewMemberRouter);
+app.use('/new-member-success', newMemberSucessRouter);
 app.use("/admin-login", adminLoginRouter);
 app.use("/submit-admin-login", submitAdminLoginRouter);
 app.use('/error', errorRouter);

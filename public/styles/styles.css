@@ -19,6 +19,10 @@
   background-image: url('/images/admin-login-background.jpg');
 }
 
+.new-member-success-body {
+  background-image: url('/images/new-member-success.jpg');
+}
+
 .form-body-wrapper {
   /*height: 100vh;*/
   /* 94 is the limit before the scrollbar appears */
@@ -26,4 +30,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container-c-border {
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 5px;
 }
