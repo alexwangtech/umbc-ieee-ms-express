@@ -38,6 +38,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app will now use sessions
+app.use(session({ secret: 'secret' }));
+
 app.use('/', indexRouter);
 app.use("/submit-attendance", submitAttendanceRouter);
 app.use("/new-member", newMemberRouter);
