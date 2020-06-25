@@ -1,8 +1,15 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+
+// this will need to be removed eventually
 var cookieParser = require('cookie-parser');
+// =======================================
+
 var logger = require('morgan');
+
+// new dependency: express-session for admin user session management
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var submitAttendanceRouter = require("./routes/submit-attendance");
