@@ -1,54 +1,54 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
+var mariadb = require('mariadb');
+var connInfo = require('../sql/conn-info.json');
 
-var mariadb = require("mariadb");
-var logins = require("../logins/logins");
-var connInfo = require("../sql/conn-info.json");
+// Function creates the query needed to search for the user
+var getSearchUserQuery = (username, password) => {
+  return (
+    `SELECT ID FROM Users WHERE Username='${username}' AND Password='${password}';`
+  );
+}
 
 /**
  * Admin Logging In
  *
  * Router for when admin submits the login information.
  */
-router.post("/", function(req, res, next) {
-  console.log("post request for submit admin login information received!");
-  
-  // add business logic for authorization here
-  const username = req.body.username;
+router.post('/', function(req, res, next) {
+
+  // Username should not be case-sensitive, but password is case-sensitive
+  const username = (req.body.username).toLowerCase();
   const password = req.body.password;
-  let verified = false;
-  for (let i = 0; i < logins.length; i++) {
-    let currObj = logins[i];
-    if (currObj.username === username && currObj.password === password) {
-      verified = true; break;
-    }
-  }
-  if (verified) {
-    mariadb.createConnection(connInfo)
-      .then(conn => {
-        conn.query("select * from members;")
-          .then(rows => {
-            console.log("Data retrieved:\n");
-            console.log(rows.slice(0, rows.length));
-            conn.end();
-            res.render("adminpage", { data: rows.slice(0, rows.length) });
-          })
-          .catch(err => {
-            console.log("Query error!");
-            res.render("error");
-          });
-      })
-      .catch(err => {
-        console.log("Connection error!");
-        res.render("error");
-      });
-  } else {
-    res.render("invalidcredentials");
-  }
-  
-  // debug
-  console.log("verified value: " + verified);
-  console.log("end of the admin login submit router");
+
+  // Make a connection to MariaDB
+  mariadb.createConnection(connInfo)
+    .then(conn => {
+      // Attempt to search for an ID that matches the username and password given in form
+      conn.query(getSearchUserQuery(username, password)) // find id that matches user
+        .then(result => {
+          // If we get a result back
+          if (result.length == 1) { // meta does not count as part of the lenght, so we just need length to be 1
+
+            // set req.session.userid -> user id (the result)
+            req.session.userid = result[0].ID;
+
+            // render the success page
+            res.render('thankyou');
+          } 
+          // If we do not get a result back
+          else {
+            // render the page again, invalid value (???)
+            res.render('admin-login');
+          }
+        })
+        .catch(err => {
+          // foo
+        });
+    })
+    .catch(err => {
+      // foo
+    });
 });
 
 module.exports = router;
