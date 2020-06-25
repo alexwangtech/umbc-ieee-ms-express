@@ -1,4 +1,5 @@
-var express = require("express");
+var express = require('express');
+const { render } = require('jade');
 var router = express.Router();
 
 /**
@@ -7,7 +8,8 @@ var router = express.Router();
  * Page for Administrator Login
  */
 router.get("/", function(req, res, next) {
-  res.render("admin-login");
+  let renderAlert = req.query.renderAlert === "true" ? true : false;
+  res.render('admin-login', { renderAlert : renderAlert });
 });
 
 module.exports = router;

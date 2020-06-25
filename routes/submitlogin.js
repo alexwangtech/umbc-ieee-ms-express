@@ -39,7 +39,7 @@ router.post('/', function(req, res, next) {
           // If we do not get a result back
           else {
             // render the page again, invalid value (???)
-            res.render('admin-login');
+            res.redirect('admin-login?renderAlert=true');
           }
         })
         .catch(err => {
