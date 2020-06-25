@@ -16,5 +16,7 @@
     "morgan": "~1.9.1",
     "npm": "^6.14.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "express-validator": "^6.6.0"
+  }
 }
