@@ -13,6 +13,9 @@ var submitNewMemberRouter = require("./routes/submit-new-member");
 var newMemberSucessRouter = require('./routes/new-member-success');
 var errorRouter = require('./routes/error');
 
+// for debugging purposes: testing the connection to mariadb
+var testRouter = require('./routes/test');
+
 var app = express();
 
 // Set app.locals variables:
@@ -36,6 +39,9 @@ app.use('/new-member-success', newMemberSucessRouter);
 app.use("/admin-login", adminLoginRouter);
 app.use("/submit-admin-login", submitAdminLoginRouter);
 app.use('/error', errorRouter);
+
+// for debugging purposes: testing the connection to mariadb
+app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
