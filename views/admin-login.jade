@@ -20,13 +20,13 @@ html
           div(class="col-sm-3 col-lg-4")
           div(class="col-sm-6 col-lg-4 shadow-lg p-3 mb-5 bg-white rounded")
             h3(class="text-center") Admin Login
-            form(method="POST", action="/submit-attendance")
+            form(method="POST", action="/submit-admin-login")
               div(class="form-group")
                 label(for="username") Username
-                input(class="form-control", type="text", id="username", placeholder="Username", required)
+                input(class="form-control", type="text", id="username", placeholder="Username", name="username", required)
               div(class="form-group")
                 label(for="password") Password
-                input(class="form-control", type="password", id="password", placeholder="Password", required)
+                input(class="form-control", type="password", id="password", placeholder="Password", name="password", required)
               div(class="text-center")
                 button(class="btn btn-primary", type="submit") Login
           div(class="col-sm-3 col-lg-4")
