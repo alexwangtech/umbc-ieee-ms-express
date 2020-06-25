@@ -37,4 +37,12 @@ mysql -u root -p${rootpasswd} umbc_ieee_members -e \
     FOREIGN KEY (MemberID) REFERENCES Members(ID) \
   );"
 
+mysql -u root -p${rootpasswd} umbc_ieee_members -e \
+  "CREATE TABLE Users ( \
+    ID int NOT NULL AUTO_INCREMENT, \
+    Username varchar(255) NOT NULL, \
+    Password varchar(255) NOT NULL, \
+    PRIMARY KEY (ID) \
+  );"
+
 echo Done!
