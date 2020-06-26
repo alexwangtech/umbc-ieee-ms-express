@@ -14,16 +14,17 @@ router.get('/', function(req, res, next) {
     if (!req.session.userid) {
         res.redirect('admin-login');
     }
-
-    // otherwise, render the admin page as usual
-    
-    // TODO
-    /*
-     * stuff needed: table data -> get from backend.
-     */
-    
-    // for now, we will render the basic page
-    res.render('adminpage');
+    else {
+        // otherwise, render the admin page as usual
+        
+        // TODO
+        /*
+        * stuff needed: table data -> get from backend.
+        */
+        
+        // for now, we will render the basic page
+        res.render('adminpage');
+    }
 });
 
 module.exports = router;
