@@ -33,8 +33,8 @@ router.post('/', function(req, res, next) {
             // set req.session.userid -> user id (the result)
             req.session.userid = result[0].ID;
 
-            // render the success page
-            res.render('thankyou');
+            // redirect to the admin page
+            res.redirect('/admin-page');
           } 
           // If we do not get a result back
           else {
