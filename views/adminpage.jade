@@ -1,15 +1,10 @@
-extends layout
+doctype html
 
-block content
-  h1 Admin Page
-  div
-    table
-      tr
-        th First Name
-        th Last Name
-        th Email Address
+html
+  head
+    title Returning Member
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="styles/styles.css")
 
-      each obj in data 
-        tr
-          each val in obj
-            td= val
+  body
+    p Welcome to the Admin Page!
