@@ -23,13 +23,13 @@ html
             form(method="POST", action="/submit-attendance")
               div(class="form-group")
                 label(for="firstname") First Name
-                input(class="form-control", type="text", id="firstname", placeholder="John", required)
+                input(class="form-control", type="text", id="firstname", name="firstname", placeholder="John", required)
               div(class="form-group")
                 label(for="lastname") Last Name
-                input(class="form-control", type="text", id="lastname", placeholder="Doe", required)
+                input(class="form-control", type="text", id="lastname", name="lastname", placeholder="Doe", required)
               div(class="form-group")
                 label(for="email") Email Address
-                input(class="form-control", type="text", id="email", placeholder="johndoe@email.com", required)
+                input(class="form-control", type="text", id="email", name="email", placeholder="johndoe@email.com", required)
               div(class="text-center")
                 button(class="btn btn-primary", type="submit") Submit
           div(class="col-sm-3 col-lg-4")
