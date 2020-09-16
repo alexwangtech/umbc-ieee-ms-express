@@ -7,9 +7,8 @@ var router = express.Router();
  * Member Submit Attendance Page
  */
 router.get('/', function(req, res, next) {
-  console.log('before redirect');
-  res.render('index', { title: 'Submit Attendance' });
-  console.log("after redirtect");
+  let renderAlert = req.query.renderAlert === "true" ? true : false;
+  res.render('index', { renderAlert : renderAlert });
 });
 
 module.exports = router;
