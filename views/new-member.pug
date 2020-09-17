@@ -1,0 +1,40 @@
+doctype html
+
+// Get variables from the express.render() call:
+- renderAlert = renderAlert
+
+html
+  head
+    title New Member
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="styles/styles.css")
+    
+  body(class="new-member-body")
+  
+    nav(class="navbar navbar-light bg-light justify-content-between")
+      a(class="navbar-brand") Navbar
+      div
+        a(class="btn btn-outline-success", href="/") Submit Attendance
+        a(class="btn btn-outline-success", href="/admin-login") Admin
+
+    div(class="form-body-wrapper")
+      div(class="container")
+        div(class="row center-block")
+          div(class="col-sm-3 col-lg-4")
+          div(class="col-sm-6 col-lg-4 shadow-lg p-3 mb-5 bg-white rounded")
+            h3(class="text-center") New Member
+            form(method="POST", action="/submit-new-member")
+              if renderAlert
+                div(class="alert alert-danger text-center", role="alert") User already exists.
+              div(class="form-group")
+                label(for="firstname") First Name
+                input(class="form-control", type="text", id="firstname", name="firstname", placeholder="John", required)
+              div(class="form-group")
+                label(for="lastname") Last Name
+                input(class="form-control", type="text", id="lastname", name="lastname", placeholder="Doe", required)
+              div(class="form-group")
+                label(for="email") Email Address
+                input(class="form-control", type="text", id="email", name="email", placeholder="johndoe@email.com", required)
+              div(class="text-center")
+                button(class="btn btn-primary", type="submit") Submit
+          div(class="col-sm-3 col-lg-4")

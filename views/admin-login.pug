@@ -1,0 +1,37 @@
+doctype html
+
+// Get variables from the express.render() call
+- renderAlert = renderAlert
+
+html
+  head
+    title Admin Login
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="styles/styles.css")
+    
+  body(class="admin-login-body")
+  
+    nav(class="navbar navbar-light bg-light justify-content-between")
+      a(class="navbar-brand") Navbar
+      div
+        a(class="btn btn-outline-success", href="/") Submit Attendance
+        a(class="btn btn-outline-success", href="/new-member") New Member?
+
+    div(class="form-body-wrapper")
+      div(class="container")
+        div(class="row center-block")
+          div(class="col-sm-3 col-lg-4")
+          div(class="col-sm-6 col-lg-4 shadow-lg p-3 mb-5 bg-white rounded")
+            h3(class="text-center") Admin Login
+            form(method="POST", action="/submit-admin-login")
+              if renderAlert
+                div(class="alert alert-danger text-center", role="alert") Invalid credentials.
+              div(class="form-group")
+                label(for="username") Username
+                input(class="form-control", type="text", id="username", placeholder="Username", name="username", required)
+              div(class="form-group")
+                label(for="password") Password
+                input(class="form-control", type="password", id="password", placeholder="Password", name="password", required)
+              div(class="text-center")
+                button(class="btn btn-primary", type="submit") Login
+          div(class="col-sm-3 col-lg-4")
