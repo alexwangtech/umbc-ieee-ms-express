@@ -69,7 +69,7 @@ function getAllMembersQuery() {
  * @returns {string} : the formatted date string
  */
 function getFormattedDateString(dateString) {
-  return dateString.substring(9, 11) + '/' + dateString.substring(6, 8) + '/' + dateString.substring(1, 5);
+  return dateString.substring(6, 8) + '/' + dateString.substring(9, 11) + '/' + dateString.substring(1, 5);
 }
 
 
@@ -107,11 +107,8 @@ function createTableData(tableHeaders) {
 
     for (let i = 0; i < tableHeaders.length - displacement; i++) {
       entry.push(['Absent']);
-      console.log(i);
     }
 
-    console.log('entry: ');
-    console.dir(entry);
     tableData.push(entry);
   });
 

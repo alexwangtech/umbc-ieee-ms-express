@@ -62,7 +62,8 @@ function getFormattedDate() {
  * Router for when user submits member attendance
  */
 router.post('/', function(req, res, next) {
-  const response = res; // for naming issues in the callback chain
+
+  let connection; // this is the MariaDB connection
 
   // get form inputs, convert to lower case
   const firstname = (req.body.firstname).toLowerCase();
@@ -72,37 +73,33 @@ router.post('/', function(req, res, next) {
   // DEBUG
   console.log('Connecting into MariaDB...');
   mariadb.createConnection(connInfo)
-    .then((conn) => {
-
-      // DEBUG
-      console.log('Querying the database for an ID...');
-
-      // Query for an ID from the Members table
-      conn.query(getSelectQuery(firstname, lastname, email))
-        .then(res => {
-
-          // DEBUG
-          console.log('res object:');
-          console.dir(res);
-          console.log('res length:' + res.length);
-
-          if (res.length == 1) { // length of 1 means that we found something
-            // do the insert query
-            // DEBUG
-            console.log('res object, promise layer 1:');
-            console.dir(res);
-          }
-          else {
-            // render and alert user that member is not found
-            response.redirect('/?renderAlert=true');
-          }
-        })
+    .then(conn => {
+      connection = conn;
+      return conn.query(getSelectQuery(firstname, lastname, email));
     })
-    .catch(err => { // connection error
+    .then(data => {
+      if (data.length == 1) {
+        // here we probably have to query the database
+        connection.query(getInsertQuery(data[0].ID))
+          .then(success => {
+            res.render('thankyou'); // probably change this in the future
+          })
+          .catch(error => {
+            // DEBUG
+            console.log("Error at the insert query...");
+            console.dir(error);
+          });
+      }
+      else {
+        // render and alert user that member is not found
+        res.redirect('/?renderAlert=true');
+      }
+    })
+    .catch(err => {
       // DEBUG
       console.log('Error inside submit-attendance router:');
       console.log(err);
-    });
+    })
 });
 
 module.exports = router;

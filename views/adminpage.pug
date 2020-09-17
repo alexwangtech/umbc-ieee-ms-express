@@ -22,5 +22,9 @@ html
         each item in data
           tr
             each data in item
-              td= data
-        
+              if data == "Present"
+                td(class="text-success")= data
+              else if data == "Absent"
+                td(class="text-warning")= data
+              else
+                td= data
