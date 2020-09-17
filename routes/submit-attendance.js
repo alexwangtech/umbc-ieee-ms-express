@@ -33,7 +33,7 @@ function getInsertQuery(memberID) {
   const date = getFormattedDate();
 
   return (
-    `INSERT INTO Attendance (MemberID, Date)
+    `INSERT INTO Attendance (MemberID, AttendanceDate)
      VALUES ('${memberID}', '${date}');`
   );
 }
