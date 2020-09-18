@@ -11,7 +11,12 @@ html
     link(rel="stylesheet", href="styles/styles.css")
 
   body
-    h1 Welcome to the Admin Page!
+    div(class="container-fluid")
+      div(class="row")
+        div(class="col")
+          h1 Welcome to the Admin Page!
+        div(class="col")
+          button(type="button" class="btn btn-outline-primary float-right") Log out
     table(class="table")
       thead
         tr
