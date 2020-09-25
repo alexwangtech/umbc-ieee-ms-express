@@ -1,8 +1,9 @@
 doctype html
 
-// get variables from the router:
+//- get variables from the router:
 - headers = tableHeaders
 - data = tableData
+
 
 html
   head
@@ -14,19 +15,34 @@ html
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous")
 
   body
+
+    //- the confirmation modal
+    div(class="modal fade" id="confirmationModal" role="dialog")
+      div(class="modal-dialog")
+        div(class="modal-content")
+          div(class="modal-header")
+            h4(class="modal-title") Modal Header
+            button(type="button" class="close" data-dismiss="modal") &times;
+          div(class="modal-body")
+            p Some text in the modal.
+          div(class="modal-footer")
+            button(type="button" class="btn btn-default" data-dismiss="modal") Close
+
+
+
     div(class="container-fluid")
       div(class="row")
         div(class="col")
           h1 Welcome to the Admin Page!
         div(class="col")
-          button(type="button" class="btn btn-outline-primary float-right") Log out
+          button(type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#confirmationModal") Log out
     table(class="table")
       thead
         tr
           each item in headers
             th(scope="col")= item
       tbody
-        // this is the general structure we are going to follow -> nested for loop style
+        //- this is the general structure we are going to follow -> nested for loop style
         each item in data
           tr
             each data in item
