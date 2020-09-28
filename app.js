@@ -20,6 +20,7 @@ var submitNewMemberRouter = require("./routes/submit-new-member");
 var newMemberSucessRouter = require('./routes/new-member-success');
 var errorRouter = require('./routes/error');
 var adminPageRouter = require('./routes/admin-page.js');
+var logoutRouter = require('./routes/logout');
 
 // for debugging purposes: testing the connection to mariadb
 var testRouter = require('./routes/test');
@@ -51,6 +52,7 @@ app.use("/admin-login", adminLoginRouter);
 app.use("/submit-admin-login", submitAdminLoginRouter);
 app.use('/error', errorRouter);
 app.use('/admin-page', adminPageRouter);
+app.use('/logout', logoutRouter);
 
 // for debugging purposes: testing the connection to mariadb
 app.use('/test', testRouter);
