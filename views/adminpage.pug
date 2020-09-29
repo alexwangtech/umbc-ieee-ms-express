@@ -64,3 +64,6 @@ html
     $(document).ready(function() {
       $("#attendanceTable").DataTable();
     });
+    $("#attendanceTable > tbody > tr").dblclick(function() {
+      console.log("table row was clicked!");
+    });
