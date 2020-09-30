@@ -61,9 +61,9 @@ html
   //- this applies DataTables to the attendance table
   //- https://datatables.net/examples/styling/bootstrap4.html
   script.
-    $(document).ready(function() {
-      $("#attendanceTable").DataTable();
-    });
-    $("#attendanceTable > tbody > tr").dblclick(function() {
-      console.log("table row was clicked!");
+
+    var attendanceTable = $('#attendanceTable').DataTable();
+
+    $('#attendanceTable tbody').on('dblclick', 'tr', function() {
+      console.log(attendanceTable.row(this).data());
     });
